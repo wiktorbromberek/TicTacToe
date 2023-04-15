@@ -32,7 +32,3 @@ export default class View {
 		this.$.menuItems.classList.toggle('hidden');
 	}
 }
-//  test``
-
-//test 2 //
-//testing elo melo 3 2 0
