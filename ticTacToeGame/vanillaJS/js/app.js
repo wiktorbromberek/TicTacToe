@@ -144,7 +144,5 @@ function init() {
 		console.log(e);
 		console.log('move');
 	});
-
-	console.log(view.$.turn);
 }
 window.addEventListener('load', init);

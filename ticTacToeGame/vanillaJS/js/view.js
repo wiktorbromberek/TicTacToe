@@ -2,15 +2,15 @@ export default class View {
 	$ = {};
 	constructor() {
 		// this.$.menu = document.querySelector('[data-id="menu-button"]');
-		this.$.menuBtn = document.querySelector('[data-id="menu-btn"]');
-		this.$.menuItems = document.querySelector('[data-id="menu-popover"]');
-		this.$.resetButton = document.querySelector('[data-id="reset-btn"]');
-		this.$.newRoundButton = document.querySelector('[data-id="new-round-btn"]');
+		this.$.menuBtn = this.qs('[data-id="menu-btn"]');
+		this.$.menuItems = this.qs('[data-id="menu-popover"]');
+		this.$.resetButton = this.qs('[data-id="reset-btn"]');
+		this.$.newRoundButton = this.qs('[data-id="new-round-btn"]');
 		this.$.squares = document.querySelectorAll('[data-id="square"]');
-		this.$.modal = document.querySelector('[data-id="modal"]');
-		this.$.modalText = document.querySelector('[data-id="modal-text"]');
-		this.$.modalBtn = document.querySelector('[data-id="modal-btn"]');
-		this.$.turn = document.querySelector('[data-id="turn"]');
+		this.$.modal = this.qs('[data-id="modal"]');
+		this.$.modalText = this.qs('[data-id="modal-text"]');
+		this.$.modalBtn = this.qs('[data-id="modal-btn"]');
+		this.$.turn = this.qs('[data-id="turn"]');
 
 		this.$.menuBtn.addEventListener('click', (e) => {
 			this.toggleMenu();
@@ -30,5 +30,19 @@ export default class View {
 	}
 	toggleMenu() {
 		this.$.menuItems.classList.toggle('hidden');
+		this.$.menuBtn.classList.toggle('border');
+
+		const icon = this.$.menuBtn.querySelector('i');
+
+		icon.classList.toggle('fa-chevron-down');
+		icon.classList.toggle('fa-chevron-up');
+	}
+
+	#qs(selector) {
+		const el = document.querySelector(selector);
+
+		if (!el) throw new Error('Could not find elements');
+
+		return el;
 	}
 }
