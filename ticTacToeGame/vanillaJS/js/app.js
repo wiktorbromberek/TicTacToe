@@ -141,8 +141,8 @@ function init() {
 		console.log('newround');
 	});
 	view.bindPlayerMoveEvent((e) => {
-		console.log(e);
-		console.log('move');
+		view.setTurnIndicator(2);
+		view.handlePlayerMove(e.target, 1);
 	});
 }
 window.addEventListener('load', init);
