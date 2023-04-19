@@ -159,14 +159,19 @@ function init() {
 		console.log(e);
 		console.log('newround');
 	});
-	view.bindPlayerMoveEvent((e) => {
-		const clickedSquare = e.target;
+	view.bindPlayerMoveEvent((square) => {
+		const existingMove = store.game.moves.find(
+			(move) => move.squareId === +square.id
+		);
+		if (existingMove) {
+			return;
+		}
 
-		view.setTurnIndicator(clickedSquare, store.game.currentPlayer);
+		view.handlePlayerMove(square, store.game.currentPlayer);
 
-		
+		store.playerMove(+square.id);
 
-		view.handlePlayerMove(e.target, players[1]);
+		view.setTurnIndicator(store.game.currentPlayer);
 	});
 }
 window.addEventListener('load', init);
